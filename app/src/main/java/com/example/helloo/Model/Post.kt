@@ -1,4 +1,4 @@
-package com.example.helloo
+package com.example.helloo.Model
 
 data class Post(
     var userId:Int,

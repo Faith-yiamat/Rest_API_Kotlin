@@ -1,4 +1,5 @@
-import com.example.helloo.PostApiInterface
+package com.example.helloo.API
+
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

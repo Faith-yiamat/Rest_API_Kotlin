@@ -1,22 +1,27 @@
-package com.example.helloo
+package com.example.helloo.Ui
 
-import ApiClient
+import com.example.helloo.API.ApiClient
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.helloo.API.PostApiInterface
+import com.example.helloo.Model.Post
 import com.example.helloo.databinding.ActivityCommentsBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Tag
 
 class Comments : AppCompatActivity() {
     var postId = 0
+    val TAG = "MYTAG"
     lateinit var binding: ActivityCommentsBinding
+    lateinit var commentsAdapter: CommentsAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "COMMENTSACTIVITY ONSTART")
         binding = ActivityCommentsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -26,6 +31,38 @@ class Comments : AppCompatActivity() {
             fetchPosts(postId)
         }
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "COMMENTSACTIVITY ONSTART")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "COMMENTSACTIVITY ONRESUME")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "COMMENTSACTIVITY ONPAUSE")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "COMMENTSACTIVITY ONSTOP")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "COMMENTSACTIVITY ONDESTROY")
+    }
+
+    private fun setupRecyclerView() {
+        commentsAdapter = CommentsAdapter(emptyList())
+        binding.rvComments.layoutManager = LinearLayoutManager(this)
+        binding.rvComments.adapter = commentsAdapter
     }
 
     fun fetchPosts(postId: Int) {

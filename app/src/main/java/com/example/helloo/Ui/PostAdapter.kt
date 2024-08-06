@@ -1,10 +1,11 @@
-package com.example.helloo
+package com.example.helloo.Ui
 
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.helloo.Model.Post
 import com.example.helloo.databinding.PostListItemBinding
 
 class PostAdapter(var posts: List<Post>, val context: Context):RecyclerView.Adapter<PostViewHolder> (){
